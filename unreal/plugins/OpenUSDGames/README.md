@@ -10,7 +10,7 @@ A collection of notes on the Unreal USD asset process.
 
 ### Importing
 
-- Reimporting a USD asset throug the content browser uses the first imported USD asset during the editor session. This can reproduce as:
+- Reimporting a USD asset through the content browser uses the first imported USD asset during the editor session. This can reproduce as:
 	1. Import a.usd
 	2. Import b.usd
 	3. Reimport b.uasset from the content browser.
