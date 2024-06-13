@@ -22,24 +22,30 @@ def Xform "PrimalCube" (
         "LOD0" {
             def Mesh "LOD0" (
                 prepend references = @./primal_cube.geom.usda@</lod0>
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
             )
             {
+                custom string unrealMaterial = "/OpenUSDGames/Assets/primal_cube/Materials/M_PrimalCube.M_PrimalCube"
             }
         }
 
         "LOD1" {
             def Mesh "LOD1" (
                 prepend references = @./primal_cube.geom.usda@</lod1>
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
             )
             {
+                custom string unrealMaterial = "/OpenUSDGames/Assets/primal_cube/Materials/M_PrimalCube.M_PrimalCube"
             }
         }
 
         "LOD2" {
             def Mesh "LOD2" (
                 prepend references = @./primal_cube.geom.usda@</lod2>
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
             )
             {
+                custom string unrealMaterial = "/OpenUSDGames/Assets/primal_cube/Materials/M_PrimalCube.M_PrimalCube"
             }
         }
     }
