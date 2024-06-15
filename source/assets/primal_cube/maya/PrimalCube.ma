@@ -1,6 +1,6 @@
 //Maya ASCII 2025 scene
 //Name: PrimalCube.ma
-//Last modified: Sat, Jun 15, 2024 03:22:34 PM
+//Last modified: Sat, Jun 15, 2024 03:38:43 PM
 //Codeset: 1252
 requires maya "2025";
 requires -nodeType "mayaUsdLayerManager" -dataType "pxrUsdStageData" "mayaUsdPlugin" "0.27.0";
@@ -10,7 +10,7 @@ fileInfo "product" "Maya 2025";
 fileInfo "version" "2025";
 fileInfo "cutIdentifier" "202402161156-0caf8d1269";
 fileInfo "osv" "Windows 11 Pro v2009 (Build: 22621)";
-fileInfo "UUID" "E92F1C30-484D-FCFF-7675-FD908410D464";
+fileInfo "UUID" "5F83663A-40F9-06C4-12CB-71BAEB635FF4";
 createNode transform -s -n "persp";
 	rename -uid "02F5D772-4DEA-349B-A39D-AF9782310E76";
 	setAttr ".v" no;
@@ -83,12 +83,10 @@ createNode camera -s -n "sideShape" -p "side";
 createNode transform -n "geom";
 	rename -uid "2F87F20D-4DA0-391D-E596-D7939E302231";
 	addAttr -ci true -sn "USD_kind" -ln "USD_kind" -nn "kind" -dt "string";
-	setAttr ".r" -type "double3" 90 0 0 ;
 	setAttr ".USD_kind" -type "string" "component";
 createNode transform -n "lod0" -p "geom";
 	rename -uid "814426FF-4A98-CFD6-542E-78AD4471ADCC";
 	addAttr -ci true -sn "USD_kind" -ln "USD_kind" -nn "kind" -dt "string";
-	setAttr ".s" -type "double3" 10 10 10 ;
 	setAttr ".USD_kind" -type "string" "component";
 createNode mesh -n "lod0Shape" -p "lod0";
 	rename -uid "EC10E116-4A16-83E5-4C0A-64A1470EC08D";
@@ -117,13 +115,17 @@ createNode mesh -n "lod0Shape" -p "lod0";
 		 0.875 0.25 0.125 0 0.125 0.25;
 	setAttr ".cuvs" -type "string" "map1";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr -s 8 ".pt[0:7]" -type "float3"  -90 -100 -10 90 -100 -10 
+		-90 -120 190.00002 90 -120 190.00002 -90 80 210.00002 90 80 210.00002 -90 100 10 
+		90 100 10;
 	setAttr -s 8 ".vt[0:7]"  -10 0 10 10 0 10 -10 20.000001907349 10 10 20.000001907349 10
 		 -10 20.000001907349 -10 10 20.000001907349 -10 -10 0 -10 10 0 -10;
 	setAttr -s 12 ".ed[0:11]"  0 1 0 1 3 0 3 2 0 2 0 0 3 5 0 5 4 0 4 2 0
 		 5 7 0 7 6 0 6 4 0 7 1 0 0 6 0;
-	setAttr -s 24 ".n[0:23]" -type "float3"  0 0 1 0 0 1 0 0 1 0 0 1 0 1
-		 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 1 0 0
-		 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0;
+	setAttr -s 24 ".n[0:23]" -type "float3"  0 -0.1 0 0 -0.1 0 0 -0.1 0
+		 0 -0.1 0 0 0 0.1 0 0 0.1 0 0 0.1 0 0 0.1 0 0.1 0 0 0.1 0 0 0.1 0 0 0.1 0 0 0 -0.1
+		 0 0 -0.1 0 0 -0.1 0 0 -0.1 0.1 0 0 0.1 0 0 0.1 0 0 0.1 0 0 -0.1 0 0 -0.1 0 0 -0.1
+		 0 0 -0.1 0 0;
 	setAttr -s 6 -ch 24 ".fc[0:5]" -type "polyFaces" 
 		f 4 0 1 2 3
 		mu 0 4 0 1 3 2
@@ -146,11 +148,8 @@ createNode mesh -n "lod0Shape" -p "lod0";
 createNode transform -n "lod1" -p "geom";
 	rename -uid "B7415C27-42D4-48E1-5948-CC917981CB77";
 	addAttr -ci true -sn "USD_kind" -ln "USD_kind" -nn "kind" -dt "string";
-	setAttr ".t" -type "double3" 0 99.633613833313973 0 ;
-	setAttr ".s" -type "double3" 99.633613586425781 99.633613586425781 99.633613586425781 ;
-	setAttr ".rp" -type "double3" 0 -99.633613586425781 0 ;
-	setAttr ".sp" -type "double3" 0 -1 0 ;
-	setAttr ".spt" -type "double3" 0 -98.633613586425781 0 ;
+	setAttr ".rp" -type "double3" 0 0 2.4688819166840403e-07 ;
+	setAttr ".sp" -type "double3" 0 0 2.4688819166840403e-07 ;
 	setAttr ".USD_kind" -type "string" "component";
 createNode mesh -n "lod1Shape" -p "lod1";
 	rename -uid "F8817895-41AA-99F6-8AE9-EE839A50D946";
@@ -170,16 +169,20 @@ createNode mesh -n "lod1Shape" -p "lod1";
 		 0.24999999 0.5 0.5 0.75 0.25 0.25 0.5 0.375 0.5 0.5 0.5 0.625 0.5 0.75 0.5 0.5 1;
 	setAttr ".cuvs" -type "string" "map1";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr -s 5 ".pt[0:4]" -type "float3"  3.9389834e-05 100.63358 0.99999994 
+		-98.633614 1.0000087 3.3431098e-07 -2.7483025e-05 -98.633614 -0.99999976 98.633629 
+		1 2.4688819e-07 0 -1 199.26723;
 	setAttr -s 5 ".vt[0:4]"  3.9935506e-07 -1 -0.9999997 -1 -1 -8.7422777e-08
 		 -2.7863751e-07 -1 1 1.000000119209 -1 0 0 1 0;
 	setAttr -s 8 ".ed[0:7]"  0 3 0 3 2 0 2 1 0 1 0 0 1 4 0 4 0 0 2 4 0
 		 3 4 0;
-	setAttr -s 16 ".n[0:15]" -type "float3"  0 -1 0 0 -1 0 0 -1 0 0 -1 0
-		 -0.66666651 0.33333328 -0.66666692 -0.66666645 0.33333328 -0.66666692 -0.66666645
-		 0.33333331 -0.66666698 -0.66666681 0.33333337 0.66666657 -0.66666681 0.33333337 0.66666657
-		 -0.66666681 0.33333337 0.66666651 0.66666657 0.33333331 0.66666681 0.66666657 0.33333331
-		 0.66666681 0.66666657 0.33333331 0.66666681 0.66666669 0.33333334 -0.66666669 0.66666669
-		 0.33333334 -0.66666669 0.66666669 0.33333334 -0.66666669;
+	setAttr -s 16 ".n[0:15]" -type "float3"  0 0 -0.010036773 0 0 -0.010036773
+		 0 0 -0.010036773 0 0 -0.010036773 -0.0066911806 0.0066911848 0.0033455906 -0.0066911797
+		 0.0066911848 0.0033455906 -0.0066911797 0.0066911853 0.0033455908 -0.0066911834 -0.0066911811
+		 0.0033455915 -0.0066911834 -0.0066911811 0.0033455915 -0.0066911834 -0.0066911806
+		 0.0033455915 0.0066911811 -0.0066911834 0.0033455908 0.0066911811 -0.0066911834 0.0033455908
+		 0.0066911811 -0.0066911834 0.0033455908 0.006691182 0.006691182 0.003345591 0.006691182
+		 0.006691182 0.003345591 0.006691182 0.006691182 0.003345591;
 	setAttr -s 5 -ch 16 ".fc[0:4]" -type "polyFaces" 
 		f 4 0 1 2 3
 		mu 0 4 0 3 2 1
@@ -200,9 +203,8 @@ createNode mesh -n "lod1Shape" -p "lod1";
 createNode transform -n "lod2" -p "geom";
 	rename -uid "F305A138-439D-5BCE-79B3-C09D200A64BF";
 	addAttr -ci true -sn "USD_kind" -ln "USD_kind" -nn "kind" -dt "string";
-	setAttr ".t" -type "double3" 0 77.789649330206004 0 ;
-	setAttr ".r" -type "double3" 47.047019958496094 0 0 ;
-	setAttr ".s" -type "double3" 197.95135498046875 197.95135498046875 197.95135498046875 ;
+	setAttr ".rp" -type "double3" 0 0 77.789649330206004 ;
+	setAttr ".sp" -type "double3" 0 0 77.789649330206004 ;
 	setAttr ".USD_kind" -type "string" "component";
 createNode mesh -n "lod2Shape" -p "lod2";
 	rename -uid "3F6B4775-4FD0-E637-A6FD-D69C5CD8AEED";
@@ -216,11 +218,14 @@ createNode mesh -n "lod2Shape" -p "lod2";
 	setAttr -s 4 ".uvst[0].uvsp[0:3]" -type "float2" 0 0 1 0 0 1 1 1;
 	setAttr ".cuvs" -type "string" "map1";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr -s 4 ".pt[0:3]" -type "float3"  -99.494827 -100.10197 -0.63185513 
+		99.130295 -100.10197 -0.63185513 -99.494827 99.766174 200.79549 99.130295 99.766174 
+		200.79549;
 	setAttr -s 4 ".vt[0:3]"  -0.50517464 0.10197255 0.6318475 0.50332373 0.10197255 0.6318475
 		 -0.50517464 0.051608369 -0.79546314 0.50332373 0.051608369 -0.79546314;
 	setAttr -s 4 ".ed[0:3]"  0 1 0 1 3 0 3 2 0 2 0 0;
-	setAttr -s 4 ".n[0:3]" -type "float3"  0 0.99937814 -0.035264127 0
-		 0.99937814 -0.035264127 0 0.99937814 -0.035264127 0 0.99937814 -0.035264127;
+	setAttr -s 4 ".n[0:3]" -type "float3"  0 -0.0035737522 0.0035704959
+		 0 -0.0035737522 0.0035704959 0 -0.0035737522 0.0035704959 0 -0.0035737522 0.0035704959;
 	setAttr -ch 4 ".fc[0]" -type "polyFaces" 
 		f 4 0 1 2 3
 		mu 0 4 0 1 3 2;
@@ -248,9 +253,6 @@ createNode renderLayerManager -n "renderLayerManager";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "3E938BB7-4B8B-3D26-414E-AFAB4C7FC879";
 	setAttr ".g" yes;
-createNode mayaUsdLayerManager -n "mayaUsdLayerManager1";
-	rename -uid "C26EA2D8-4152-CCD1-D341-A5B03533E12C";
-	setAttr ".sst" -type "string" "";
 createNode script -n "uiConfigurationScriptNode";
 	rename -uid "0A61FD2B-433B-0661-94EE-1DA85CDC4A78";
 	setAttr ".b" -type "string" (
@@ -298,6 +300,9 @@ createNode script -n "sceneConfigurationScriptNode";
 	rename -uid "B5E4E23F-4B51-2ECA-2059-10B59C91D479";
 	setAttr ".b" -type "string" "playbackOptions -min 1 -max 120 -ast 1 -aet 200 ";
 	setAttr ".st" 6;
+createNode mayaUsdLayerManager -n "mayaUsdLayerManager1";
+	rename -uid "7104CE32-4168-C4B2-270F-07BAD95FA920";
+	setAttr ".sst" -type "string" "";
 select -ne :time1;
 	setAttr ".o" 1;
 	setAttr ".unw" 1;
@@ -341,6 +346,8 @@ select -ne :defaultColorMgtGlobals;
 select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
+select -ne :ikSystem;
+	setAttr -s 4 ".sol";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
