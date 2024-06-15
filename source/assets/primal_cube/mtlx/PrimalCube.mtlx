@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38" colorspace="lin_rec709">
+  <standard_surface name="SR_PrimalCube" type="surfaceshader" xpos="6.884058" ypos="-0.560345">
+    <input name="base" type="float" value="1" />
+    <input name="base_color" type="color3" value="0.12142, 0.79902, 0.500079" />
+    <input name="specular_roughness" type="float" value="0.1" />
+    <input name="subsurface" type="float" value="0.4" />
+    <input name="subsurface_color" type="color3" value="1, 1, 1" />
+  </standard_surface>
+  <surfacematerial name="PrimalCube" type="material" xpos="8.695652" ypos="0.000000">
+    <input name="surfaceshader" type="surfaceshader" nodename="SR_PrimalCube" />
+  </surfacematerial>
+</materialx>
