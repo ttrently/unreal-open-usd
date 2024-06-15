@@ -1,0 +1,6 @@
+#usda 1.0
+(
+    defaultPrim = "PrimalCube"
+    metersPerUnit = 0.01
+    upAxis = "Z"
+)

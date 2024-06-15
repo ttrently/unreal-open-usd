@@ -7,21 +7,24 @@
 
 def Xform "PrimalCube" (
     assetInfo = {
+        asset identifier = @./PrimalCube.usd@
         string name = "PrimalCube"
         dictionary unreal = {
             string assetType = "StaticMesh"
         }
     }
+    kind = "component"
+    # prepend payload = @./PrimalCube.payload.usd@
     variants = {
         string LOD = "LOD0"
     }
-    prepend variantSets = "LOD"
+    add variantSets = "LOD"
 )
 {
     variantSet "LOD" = {
         "LOD0" {
             def Mesh "LOD0" (
-                prepend references = @./primal_cube.geom.usda@</lod0>
+                prepend references = @./PrimalCube.geom.usd@</geom/lod0>
                 prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
             )
             {
@@ -31,7 +34,7 @@ def Xform "PrimalCube" (
 
         "LOD1" {
             def Mesh "LOD1" (
-                prepend references = @./primal_cube.geom.usda@</lod1>
+                prepend references = @./PrimalCube.geom.usd@</geom/lod1>
                 prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
             )
             {
@@ -41,7 +44,7 @@ def Xform "PrimalCube" (
 
         "LOD2" {
             def Mesh "LOD2" (
-                prepend references = @./primal_cube.geom.usda@</lod2>
+                prepend references = @./PrimalCube.geom.usd@</geom/lod2>
                 prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
             )
             {
